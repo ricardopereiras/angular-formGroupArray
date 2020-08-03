@@ -1,0 +1,23 @@
+<div [formGroup]="Formulario"  class="body">
+
+  <div formArrayName="Enderecos" *ngFor="let item of Formulario.get('Enderecos')?.controls; let i = index">
+    <div [formGroupName]="i" class="item">
+      <fieldset>
+        <legend> <img src="../assets/img/1264791.svg" alt=""> {{i + 1}} </legend>
+        <input type="text" name="cep" id="cep" formControlName="cep" class="pequeno" placeholder="CEP" maxlength="8">
+        <a class="buttonFloat cinza" (click)="buscaCEP(this.Formulario.controls.Enderecos.value[i].cep, i)" ><i class="fa fa-search"></i></a>
+        <br>
+        <input type="text" formControlName="logradouro" name="logradouro" class="grande" id="logradouro" placeholder="Logradouro">
+        <input type="text" formControlName="bairro" name="bairro" id="bairro" placeholder="Bairro" class="grande">
+        <input type="text" formControlName="cidade" name="cidade" id="cidade" placeholder="Cidade" class="grande">
+        <input type="text" formControlName="uf" name="uf" id="uf" placeholder="UF" class="minimo">
+        <input type="text" formControlName="ibge" name="ibge" id="ibge" placeholder="Ibge" class="pequeno">
+        <br>
+        <a class="buttonFloat verde" (click)="adicionaFormulario()"><i class="fa fa-plus-circle"></i></a>
+      </fieldset>      
+    </div>
+  </div>
+</div>
+
+
+<div class="loader" *ngIf="mostraLoader"><div class="lds-roller center"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
